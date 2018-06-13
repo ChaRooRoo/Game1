@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string>
 #include "GameMechanics.h"
+//#include "Characters.h"
 #include <ctime>
 
 //Game Mechanics
@@ -45,14 +46,13 @@ int Dice::roll() {
 	return rand() % sides + 1;
 }
 
-/*
-attackPhase() {};
-~attackPhase();
-int selectAttack();
-*/
 
 Phase::Phase() : GameMechanics("Phase")
 {
+}
+
+Phase::Phase(std::string name) : phaseName(name) {
+
 }
 
 Phase::~Phase()
@@ -66,5 +66,32 @@ std::string Phase::getPhaseName() const
 
 void Phase::display()
 {
-
+	std::cout << "Abstract Phase, no specific phase has been chosen.\n";
 }
+
+attackPhase::attackPhase() : Phase("Attack Phase")
+{
+}
+
+
+
+void attackPhase::display(const Characters& player, const Characters& enemy) {
+	const std::string *tempPtr =  player.getAttackNames();
+	std::cout << "Health:  "; 
+	player.displayHP();
+	std::cout << "Magic: ";
+	player.displayMP();
+	std::cout << "\nSELECT AN ATTACK\n";
+	//to have horizontal row you must create a separate type of algorithm
+
+	//This actually displays the content
+	for (int i = 0; i < 4; i++) {
+		std::cout << "[" << i+1 << "]" << tempPtr[i] << std::endl;
+	}
+}
+
+attackPhase::~attackPhase() 
+{
+}
+
+//int attackPhase::selectAttack();

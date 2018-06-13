@@ -7,35 +7,67 @@ Characters::Characters()
 {
 }
 
-Characters::Characters(std::string, int hP, int aS, int dP): hitPoints(hP), attackPoints(aS), defensePoints(dP) 
+Characters::Characters(std::string c, int hP, int aP, int dP): characterName(c), hitPoints(hP), attackPoints(aP), defensePoints(dP) 
 {
 }
 
+	//accessors
 int Characters::getHitPoints() const {	return hitPoints; }
 int Characters::getAttackPoints() const { return attackPoints; }
 int Characters::getDefensePoints() const { return defensePoints; }
 std::string Characters::getCharacterName() const { return characterName; }
 
-void Characters::setHitPoints(int hP) { hitPoints = hP; }
-void Characters::setAttackPoints(int aS) { attackPoints = aS; }
-void Characters::setDefensePoints(int dP) { defensePoints = dP; }
+int Characters::getLevel() const
+{	
+	return lvl;
+}
 
+const std::string* Characters::getAttackNames() const 
+{
+	return attackNames;
+}
+
+//mutators
+void Characters::setHitPoints(int hP) { hitPoints = hP; }
+void Characters::setAttackPoints(int aP) { attackPoints = aP; }
+void Characters::setDefensePoints(int dP) { defensePoints = dP; }
 void Characters::setCharacterName(std::string n) { characterName = n; }
 
-void Characters::setAttacks()
+void Characters::setLevel(int x)
 {
-	int tempName = '\0';
-	for (int i = 0; i < 4; i++) 
-	{
-		std::cin >> tempName;
-		attackNames[i] = tempName;
-	}
+	lvl = x;
+}
+
+void Characters::setMagicPoints(int m)
+{
+	this->setMagicPoints(m);
 }
 
 
 Characters::~Characters()
 {
 }
+
+void Characters::setAttacks(std::string attack1, std::string attack2, std::string attack3, std::string attack4) {
+	std::string temp[4] = { attack1, attack2, attack3, attack4 };
+	for (int i = 0; i < 4; i++) {
+		attackNames[i] = temp[i];
+	}
+	return;
+}
+
+void Characters::displayHP() const {
+	int currentHP = this->getHitPoints() / 10;
+
+	for (int i = 0; i < currentHP; i++) {
+		std::cout << "|";
+	}
+	std::cout << "\n\nEach \'|\' = 10pts\n";
+	return;
+}
+
+void Characters::displayMP() const{}
+
 
 Player::Player() 
 {
@@ -47,11 +79,30 @@ Player::Player()
 	setAttackPoints(1);
 	setDefensePoints(5);
 	setCharacterName(name);
-	lvl = 0;
+	this->setLevel(0);
 
 }
-Player::~Player() {}
 
-void setAttacks(std::string attack1, std::string attack2,  attack3, int attack4) {
+Player::~Player() 
+{
+}
+
+
+Enemy::Enemy(std::string name, int lvl) {
+	setHitPoints(100 * lvl);
+	setAttackPoints(1 * lvl);
+	setDefensePoints(1 * lvl);
+	setCharacterName(name);
 	
+}
+
+Enemy::~Enemy() {}
+
+StarbucksEmployee::StarbucksEmployee() : Enemy("Starbucks Employee", 1)
+{
+}
+
+StarbucksEmployee::~StarbucksEmployee()
+{
+
 }

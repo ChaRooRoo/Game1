@@ -1,16 +1,12 @@
 #pragma once
 
 #include "stdafx.h"
-#include "Characters.h"
+#include <stdlib.h>
 #include <string>
 #include <iostream>
 
 //check ifndef
 
-#include "stdafx.h"
-#include <stdlib.h>
-#include <string>
-#include <ctime>
 
 class Characters
 {
@@ -20,36 +16,61 @@ private:
 		//Points maybe changed later
 	int attackPoints;
 	int defensePoints;
-	int attackNames[4];
+	int lvl;
+	int magicPoints;
+	std::string attackNames[4];
 public:
 	Characters();
-	Characters(std::string name,int hP, int aS, int dP);
+		//remember you are missing a way to initialize mP
+	Characters(std::string name,int hP,int aP, int dP);
 	//accessors
 	int getHitPoints() const;
 	int getAttackPoints() const;
 	int getDefensePoints() const;
 	std::string getCharacterName() const;
+	int getLevel()const;
+	const std::string* getAttackNames() const;
 	
-
 	//mutators
 	void setHitPoints(int hP);
-	void setAttackPoints(int aS);
+	void setAttackPoints(int aP);
 	void setDefensePoints(int dP);
 	void setCharacterName(std::string n);
-	void setAttacks();
+	void setLevel(int x);
+	void setMagicPoints(int m);
 
+	void setAttacks(std::string attack1, std::string attack2, std::string attack3, std::string attack4);
+	void displayHP() const;
+	void displayMP() const;
 
 	~Characters();
 };
 
 class Player : public Characters {
 private:
-	int lvl;
 		//PROFESSIONS SHOULD BE THEIR OWN CLASSES!
 public:
 	Player();
 	~Player();
-	void setAttacks(int attack1, int attack2, int attack3, int attack4);
+	
+};
+
+class Enemy : public Characters {
+private:
+public:
+	Enemy(std::string name ,int lvl);
+	~Enemy();
+
+
+};
+
+class StarbucksEmployee : public Enemy {
+private:
+
+
+public:
+	StarbucksEmployee();
+	~StarbucksEmployee();
 	
 };
 

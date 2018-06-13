@@ -1,3 +1,7 @@
 ﻿  Game 1.cpp
-  Game 1.vcxproj -> C:\Users\Armand\documents\visual studio 2017\Projects\Game 1\Debug\Game 1.exe
-  Game 1.vcxproj -> C:\Users\Armand\documents\visual studio 2017\Projects\Game 1\Debug\Game 1.pdb (Partial PDB)
+c:\users\armand\documents\visual studio 2017\projects\game 1\game 1\game 1.cpp(33): error C2065: 'attackPhase': undeclared identifier
+c:\users\armand\documents\visual studio 2017\projects\game 1\game 1\game 1.cpp(33): error C2146: syntax error: missing ';' before identifier 'aPhase'
+c:\users\armand\documents\visual studio 2017\projects\game 1\game 1\game 1.cpp(33): error C2065: 'aPhase': undeclared identifier
+c:\users\armand\documents\visual studio 2017\projects\game 1\game 1\game 1.cpp(39): error C2065: 'aPhase': undeclared identifier
+c:\users\armand\documents\visual studio 2017\projects\game 1\game 1\game 1.cpp(39): error C2228: left of '.display' must have class/struct/union
+  c:\users\armand\documents\visual studio 2017\projects\game 1\game 1\game 1.cpp(39): note: type is 'unknown-type'

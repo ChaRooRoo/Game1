@@ -1,7 +1,7 @@
 #pragma once
 
 #include "stdafx.h"
-#include "GameMechanics.h"
+#include "Characters.h"
 #include <stdlib.h>
 #include <string>
 #include <ctime>
@@ -47,29 +47,28 @@ private:
 	int count;
 public:
 	Phase();
+	Phase(std::string);
 	~Phase();
+	//getters
 	std::string getPhaseName() const;
+	
 		//Remember -- make sure you check out VIRTUAL FUNCTIONS
 	void display();
-	void getCount();
-	void addTurn();
+	//void getCount();
+	//void addTurn();
 
 
 };
 
 
-/*
-class attackPhase : public GameMechanics {
+
+class attackPhase : public Phase {
 private:
-	int attack1;
-	int attack2;
-	int attack3;
-	int attack4;
+
 public:
 	attackPhase();
 	~attackPhase();
-	int selectAttack();
+	void display(const Characters& player, const Characters& enemy);
+	//int selectAttack();
 };
-
-*/
 
