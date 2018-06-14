@@ -75,8 +75,9 @@ attackPhase::attackPhase() : Phase("Attack Phase")
 
 
 
-void attackPhase::display(const Characters& player, const Characters& enemy) {
-	const std::string *tempPtr =  player.getAttackNames();
+void attackPhase::display(Characters& player, Characters& enemy) {
+	//remember any changes made with this pointer will create issues with the original player
+	Attack *tempPtr =  player.getAttacks();
 	std::cout << "Health:  "; 
 	player.displayHP();
 	std::cout << std::endl << std::endl << "Magic: ";
@@ -102,7 +103,25 @@ int attackPhase::selectAttack() {
 
 };
 
+Attack::Attack() : name(""), mPConsumed(0), damageDone(0), hitChance(0.0)
+{
+}
+
 Attack::Attack(std::string aName, int mP, int damage, double hChance) :  name (aName), mPConsumed(mP), damageDone(damage), hitChance(hChance)
 {
 
 }
+
+
+std::string Attack::getName() { return name; }
+int Attack::getMPConsumption() { return mPConsumed; }
+int Attack::getdamageDone() { return damageDone; }
+double Attack::getHitChance() {return hitChance;}
+
+
+void Attack::setName(std::string n) {
+
+}
+void Attack::setMPConsumption(int mP) {}
+void Attack::setdamageDone(int damage) {}
+void Attack::sethitChance(int h) {}

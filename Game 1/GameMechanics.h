@@ -68,7 +68,22 @@ private:
 	double hitChance;
 
 public:
-	Attack(std::string name, int mP, int damage, double critical);
+	Attack();
+	Attack(std::string n, int mP, int damage, double critical);
+	//getters
+	std::string getName();
+	int getMPConsumption();
+	int getdamageDone();
+	double getHitChance();
+
+	//setters
+
+	void setName(std::string n);
+	void setMPConsumption(int mP);
+	void setdamageDone(int damage);
+	void sethitChance(int h);
+
+
 
 };
 
@@ -80,7 +95,7 @@ private:
 public:
 	attackPhase();
 	~attackPhase();
-	void display(const Characters& player, const Characters& enemy);
+	void display(Characters& player, Characters& enemy);
 	int selectAttack();
 	//int selectAttack();
 };

@@ -12,12 +12,8 @@
 #define LINES_SKIPPED 15
 //void readStory(int x);
 
-void formatPlayArea(int x) {
-	for (int i = 0; i < x; i++) {
-		std::cout << std::endl;
-	}
-	return;
-}
+void formatPlayArea(int x);
+void gameSetup(Player& player, Enemy& enemy);
 
 
 
@@ -27,12 +23,7 @@ int main()
 
 	std::cout << "____Welcome to the Game!____\n\n";
 	Player player1;
-	player1.
 	StarbucksEmployee janice;
-	janice.setAttack();
-	janice.setAttack();
-	janice.setAttack();
-	player.setAttack();
 	attackPhase aPhase;
 
 			//placeholder text
@@ -52,5 +43,30 @@ int main()
     return 0;
 }
 
-//void readStory(int x);
+void formatPlayArea(int x) {
+	for (int i = 0; i < x; i++) {
+		std::cout << std::endl;
+	}
+	return;
+}
 
+void gameSetup(Player& player, Enemy& enemy) {
+	Attack pAttack1("Punch", 1, 1, 1.0);
+	Attack pAttack2("Punch", 1, 1, 1.0);
+	Attack pAttack3("Punch", 1, 1, 1.0);
+	Attack pAttack4("Punch", 1, 1, 1.0);
+	player.setAttack(0,pAttack1);
+	player.setAttack(1, pAttack2);
+	player.setAttack(2, pAttack3);
+	player.setAttack(4, pAttack4);
+
+	Attack eAttack1("Punch", 1, 1, 1.0);
+	Attack eAttack2("Punch", 1, 1, 1.0);
+	Attack eAttack3("Punch", 1, 1, 1.0);
+	Attack eAttack4("Punch", 1, 1, 1.0);
+	player.setAttack(0, eAttack1);
+	player.setAttack(1, eAttack2);
+	player.setAttack(2, eAttack3);
+	player.setAttack(4, eAttack4);
+
+}

@@ -34,6 +34,7 @@ public:
 	int getLevel()const;
 	Attack* getAttacks();
 
+
 	
 	//mutators
 	void setHitPoints(int hP);
@@ -42,7 +43,7 @@ public:
 	void setDefensePoints(int dP);
 	void setCharacterName(std::string n);
 	void setLevel(int x);
-	void setAttack(int attackIndex, std::string name, int mP, int damageDone, double hitChance);
+	void setAttack(int attackIndex, Attack currentAttack);
 
 	void displayHP() const;
 	void displayMP() const;

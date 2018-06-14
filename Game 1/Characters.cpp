@@ -38,11 +38,8 @@ void Characters::setMagicPoints(int m){ magicPoints = m; }
 
 Characters::~Characters() { }
 
-void Characters::setAttack(int attackIndex, std::string name, int mP, int damageDone, double hitChance) {
-	Attack attack1(name, mP, damageDone, hitChance);
-	Attack * tempAttacks = this->getAttacks();
-	tempAttacks[attackIndex] = attack1;
-	return;
+void Characters::setAttack(int attackIndex, Attack currentAttack) {
+	this->attacks[attackIndex] = currentAttack;
 }
 
 void Characters::displayHP() const {
