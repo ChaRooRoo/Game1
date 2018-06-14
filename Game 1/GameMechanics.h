@@ -60,6 +60,18 @@ public:
 
 };
 
+class Attack {
+private:
+	std::string name;
+	int mPConsumed;
+	int damageDone;
+	double hitChance;
+
+public:
+	Attack(std::string name, int mP, int damage, double critical);
+
+};
+
 
 
 class attackPhase : public Phase {
@@ -69,6 +81,7 @@ public:
 	attackPhase();
 	~attackPhase();
 	void display(const Characters& player, const Characters& enemy);
+	int selectAttack();
 	//int selectAttack();
 };
 

@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string>
 #include <iostream>
+#include "GameMechanics.h"
 
 //check ifndef
 
@@ -13,33 +14,36 @@ class Characters
 private:
 	std::string characterName;
 	int hitPoints;
+	int magicPoints;
 		//Points maybe changed later
 	int attackPoints;
 	int defensePoints;
 	int lvl;
-	int magicPoints;
-	std::string attackNames[4];
+	//std::string attackNames[4];
+	Attack attacks[4];
 public:
 	Characters();
 		//remember you are missing a way to initialize mP
 	Characters(std::string name,int hP,int aP, int dP);
 	//accessors
 	int getHitPoints() const;
+	int getMagicPoints() const;
 	int getAttackPoints() const;
 	int getDefensePoints() const;
 	std::string getCharacterName() const;
 	int getLevel()const;
-	const std::string* getAttackNames() const;
+	Attack* getAttacks();
+
 	
 	//mutators
 	void setHitPoints(int hP);
+	void setMagicPoints(int m);
 	void setAttackPoints(int aP);
 	void setDefensePoints(int dP);
 	void setCharacterName(std::string n);
 	void setLevel(int x);
-	void setMagicPoints(int m);
+	void setAttack(int attackIndex, std::string name, int mP, int damageDone, double hitChance);
 
-	void setAttacks(std::string attack1, std::string attack2, std::string attack3, std::string attack4);
 	void displayHP() const;
 	void displayMP() const;
 

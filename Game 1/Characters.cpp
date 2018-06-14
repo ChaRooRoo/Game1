@@ -13,60 +13,56 @@ Characters::Characters(std::string c, int hP, int aP, int dP): characterName(c),
 
 	//accessors
 int Characters::getHitPoints() const {	return hitPoints; }
+int Characters::getMagicPoints() const { return magicPoints;}
 int Characters::getAttackPoints() const { return attackPoints; }
 int Characters::getDefensePoints() const { return defensePoints; }
 std::string Characters::getCharacterName() const { return characterName; }
 
-int Characters::getLevel() const
-{	
-	return lvl;
-}
+int Characters::getLevel() const{ return lvl; }
 
-const std::string* Characters::getAttackNames() const 
-{
-	return attackNames;
+Attack* Characters::getAttacks()  {
+	return attacks;
 }
 
 //mutators
-void Characters::setHitPoints(int hP) { hitPoints = hP; }
+void Characters::setHitPoints(int hP) { hitPoints = hP; }	
+	//Damage
 void Characters::setAttackPoints(int aP) { attackPoints = aP; }
 void Characters::setDefensePoints(int dP) { defensePoints = dP; }
 void Characters::setCharacterName(std::string n) { characterName = n; }
 
-void Characters::setLevel(int x)
-{
-	lvl = x;
-}
+void Characters::setLevel(int x){ lvl = x; }
 
-void Characters::setMagicPoints(int m)
-{
-	this->setMagicPoints(m);
-}
+void Characters::setMagicPoints(int m){ magicPoints = m; }
 
 
-Characters::~Characters()
-{
-}
+Characters::~Characters() { }
 
-void Characters::setAttacks(std::string attack1, std::string attack2, std::string attack3, std::string attack4) {
-	std::string temp[4] = { attack1, attack2, attack3, attack4 };
-	for (int i = 0; i < 4; i++) {
-		attackNames[i] = temp[i];
-	}
+void Characters::setAttack(int attackIndex, std::string name, int mP, int damageDone, double hitChance) {
+	Attack attack1(name, mP, damageDone, hitChance);
+	Attack * tempAttacks = this->getAttacks();
+	tempAttacks[attackIndex] = attack1;
 	return;
 }
 
 void Characters::displayHP() const {
-	int currentHP = this->getHitPoints() / 10;
 
+	int currentHP = this->getHitPoints() / 10;
 	for (int i = 0; i < currentHP; i++) {
 		std::cout << "|";
 	}
-	std::cout << "\n\nEach \'|\' = 10pts\n";
 	return;
 }
 
-void Characters::displayMP() const{}
+void Characters::displayMP() const
+{
+	int currentMP = this->getMagicPoints() / 10;
+	for (int i = 0; i < currentMP; i++) {
+		std::cout << "|";
+	}
+	
+	return;
+}
 
 
 Player::Player() 
@@ -76,10 +72,11 @@ Player::Player()
 	std::cin >> name;
 	std::cout << std::endl << std::endl;
 	setHitPoints(100);
+	setMagicPoints(10);
 	setAttackPoints(1);
 	setDefensePoints(5);
 	setCharacterName(name);
-	this->setLevel(0);
+	setLevel(0);
 
 }
 
@@ -92,6 +89,7 @@ Enemy::Enemy(std::string name, int lvl) {
 	setHitPoints(100 * lvl);
 	setAttackPoints(1 * lvl);
 	setDefensePoints(1 * lvl);
+	setMagicPoints(5 * lvl);
 	setCharacterName(name);
 	
 }

@@ -79,9 +79,11 @@ void attackPhase::display(const Characters& player, const Characters& enemy) {
 	const std::string *tempPtr =  player.getAttackNames();
 	std::cout << "Health:  "; 
 	player.displayHP();
-	std::cout << "Magic: ";
+	std::cout << std::endl << std::endl << "Magic: ";
 	player.displayMP();
-	std::cout << "\nSELECT AN ATTACK\n";
+	std::cout << std::endl;
+	std::cout << std::endl << "\nEach \'|\' = 10pts\n";
+	std::cout << "\nSELECT AN ATTACK\n\n";
 	//to have horizontal row you must create a separate type of algorithm
 
 	//This actually displays the content
@@ -94,4 +96,13 @@ attackPhase::~attackPhase()
 {
 }
 
-//int attackPhase::selectAttack();
+int attackPhase::selectAttack() {
+	int choice = 0;
+	std::cout << "Please select which attack you would like to use: ";
+
+};
+
+Attack::Attack(std::string aName, int mP, int damage, double hChance) :  name (aName), mPConsumed(mP), damageDone(damage), hitChance(hChance)
+{
+
+}

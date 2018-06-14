@@ -27,9 +27,12 @@ int main()
 
 	std::cout << "____Welcome to the Game!____\n\n";
 	Player player1;
-	player1.setAttacks("Leaping Fist", "Anger of the Gods", "Spinning Back Kick", "Cry");
+	player1.
 	StarbucksEmployee janice;
-	janice.setAttacks("Mocho Karate", "Morning Kick", "Heart Attack Force", "Stain Seeker");
+	janice.setAttack();
+	janice.setAttack();
+	janice.setAttack();
+	player.setAttack();
 	attackPhase aPhase;
 
 			//placeholder text
@@ -37,6 +40,7 @@ int main()
 	
 	formatPlayArea(LINES_SKIPPED);
 	aPhase.display(player1, janice);
+
 
 
 	
